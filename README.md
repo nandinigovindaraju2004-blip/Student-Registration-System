@@ -1,9 +1,3 @@
-# Full Stack Python Developer Assignment — Reference Project
-
-A complete, runnable implementation of the 20-mark Full Stack Python Developer
-interview assignment (Sections B, C, and D). Built with **Flask**, **SQLite**,
-**Bootstrap 5**, and vanilla **JavaScript**.
-
 ## Project Structure
 
 ```
