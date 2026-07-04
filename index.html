@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center g-4">
+
+  <!-- ===== Registration Form (Q11-Q14) ===== -->
+  <div class="col-12 col-md-8 col-lg-6">
+    <div class="card form-card shadow-sm">
+      <div class="card-body p-4 p-md-5">
+        <h2 class="card-title mb-1">Student Registration</h2>
+        <p class="text-muted mb-4">Fill in the details below to create an account.</p>
+
+        <form id="registerForm" novalidate>
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="e.g. Priya Nair" required>
+            <div class="invalid-feedback" id="nameError">Please enter your full name.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="e.g. priya@example.com" required>
+            <div class="invalid-feedback" id="emailError">Please enter a valid email address.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Minimum 6 characters" required>
+            <div class="invalid-feedback" id="passwordError">Password must be at least 6 characters.</div>
+          </div>
+
+          <div class="mb-4">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="10-digit mobile number" required>
+            <div class="invalid-feedback" id="phoneError">Phone number must be exactly 10 digits.</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 btn-submit">
+            <i class="bi bi-check2-circle me-1"></i> Register
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Success Card + Live Table (Q15) ===== -->
+  <div class="col-12 col-md-8 col-lg-6">
+    <div id="resultCard" class="card result-card shadow-sm d-none">
+      <div class="card-body p-4">
+        <h5 class="card-title text-success"><i class="bi bi-patch-check-fill me-1"></i>Registration Successful</h5>
+        <p class="mb-1"><strong>Name:</strong> <span id="outName"></span></p>
+        <p class="mb-1"><strong>Email:</strong> <span id="outEmail"></span></p>
+        <p class="mb-0"><strong>Phone:</strong> <span id="outPhone"></span></p>
+      </div>
+    </div>
+
+    <div class="card mt-4 shadow-sm">
+      <div class="card-body p-4">
+        <h5 class="card-title mb-3"><i class="bi bi-people-fill me-1"></i>Recently Submitted (this session)</h5>
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody id="liveTableBody">
+              <tr id="emptyRow">
+                <td colspan="3" class="text-center text-muted py-3">No submissions yet</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <a href="{{ url_for('students_page') }}" class="btn btn-outline-secondary btn-sm mt-3">
+          View all students in database <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/validate.js') }}"></script>
+{% endblock %}
